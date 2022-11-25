@@ -13,7 +13,7 @@ import Carousel from "react-material-ui-carousel";
 // Import
 import CardFilm from "./Card/CardFilm";
 
-export default function Flim() {
+export default function Film() {
   var filmsCurrent = [
     {
       name: "Random Name #1",
