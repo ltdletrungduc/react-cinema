@@ -1,29 +1,26 @@
-import { unwrapResult } from "@reduxjs/toolkit";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import "./App.css";
-import Carousel from "./Components/Carousel/Carousel";
-import Film from "./Components/Film/Film";
-import Header from "./Components/Header";
-import Promotion from "./Components/Promotion/Promotion";
-import { getMovie } from "./redux/slices/movie.slice";
+import 'swiper/swiper.min.css';
+import './assets/boxicons-2.0.7/css/boxicons.min.css';
+import './App.scss';
+
+import { BrowserRouter, Route } from 'react-router-dom';
+
+import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
+
+import Routes from './config/Routes';
 
 function App() {
-  const movieDispatch = useDispatch();
-  useEffect(() => {
-    movieDispatch(getMovie())
-      .then(unwrapResult)
-      .then((res) => console.log(res));
-  }, []);
-
-  return (
-    <div className="App">
-      <Header />
-      <Carousel />
-      <Film />
-      <Promotion />
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <Route render={props => (
+                <>
+                    <Header {...props}/>
+                    <Routes/>
+                    <Footer/>
+                </>
+            )}/>
+        </BrowserRouter>
+    );
 }
 
 export default App;
